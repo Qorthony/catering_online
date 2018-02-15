@@ -27,7 +27,9 @@ class pembayaranController extends Controller
                 ->join('users','users.id','=','dataPelanggan.id_user')
                 ->select(DB::raw('*,sum(produk.harga) as jBelanja,sum(produk.harga)*order.jumlah as total'))
                 ->groupBy('id_order')
+                ->orderBy('id_pembayaran','DESC')
                 ->get();
+      
       // dd($pembayaran);
       // $total=$pembayaran->jumlah*$pembayaran->jBelanja;
 

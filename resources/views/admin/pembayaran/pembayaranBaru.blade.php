@@ -36,6 +36,7 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
+                                            <th>NO</th>
                                             <th>USERNAME</th>
                                             <th>NAMA PRODUK</th>
                                             <th>HARGA</th>
@@ -45,11 +46,12 @@
                                             <th>STATUS</th>
                                             <th>GAMBAR</th>
                                             <th>KONFIRMASI</th>
-                                            <th>ACTION</th>
+                                            <!-- <th>ACTION</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                          <th>NO</th>
                                           <th>USERNAME</th>
                                           <th>NAMA PRODUK</th>
                                           <th>HARGA</th>
@@ -60,14 +62,15 @@
 
                                           <th>GAMBAR</th>
                                           <th>KONFIRMASI</th>
-                                          <th>ACTION</th>
+                                          <!-- <th>ACTION</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                      <?php $no=1; ?>
                                       <?php foreach ($pembayaran as $data): ?>
                                         <tr>
                                              <input type="hidden" name="id_kategori" value="<?php echo $data->id_pembayaran; ?>">
-
+                                             <td> <?php echo $no;$no++; ?> </td>
                                             <td> <?php echo $data->username; ?> </td>
                                             <td> <?php echo $data->nama_produk; ?> </td>
                                             <td> <?php echo $data->harga; ?> </td>
@@ -91,11 +94,11 @@
                                               </form>
 
                                             </td>
-                                            <td>
+                                            <!-- <td> -->
                                               <!-- <a href="{{url('admin/pembayaran/edit/'.$data->id_pembayaran)}}"> <button type="button" class="btn bg-blue waves-effect">
                                               <i class="material-icons">mode_edit</i></button></a> -->
-                                              <a href="{{url('admin/pembayaran/'.$data->id_pembayaran)}}"> <button type="button" class="btn bg-red waves-effect">
-                                                <i class="material-icons">delete_sweep</i></button></a> </td>
+                                              <!-- <a href="{{url('admin/pembayaran/'.$data->id_pembayaran)}}"> <button type="button" class="btn bg-red waves-effect">
+                                                <i class="material-icons">delete_sweep</i></button></a> </td> -->
 
                                         </tr>
                                       <?php endforeach; ?>
