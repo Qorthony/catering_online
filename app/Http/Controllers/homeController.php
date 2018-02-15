@@ -271,5 +271,35 @@ class homeController extends Controller
       return redirect('/');
   }
 
+  public function catatanPembelian()
+  {
+    if (Auth::user()) {
+      $id=Auth::user()->id;
+      $list=DB::table('order')
+            ->join('produk','order.id_produk','=','produk.id_produk')
+            ->join('dataPelanggan','dataPelanggan.id_pelanggan','=','order.id_pelanggan')
+            ->join('users','users.id','=','dataPelanggan.id_user')
+            ->select(DB::raw('*,order.id as id_order,sum(produk.harga)*order.jumlah as total'))
+
+            ->where('id_user','=',$id)
+            ->groupBy('order.id')
+            ->get();
+
+    // $pelanggan=DB::table('dataPelanggan')
+    $kategoris=DB::table('kategori')->get();
+    $order=DB::table('order')
+          ->join('dataPelanggan','dataPelanggan.id_pelanggan','=','order.id_pelanggan')
+          ->join('users','users.id','=','dataPelanggan.id_user')
+          ->select(DB::raw('count(*) as jumlahOrder'))
+          ->where('id_user','=',$id)
+          ->where('status','<>','selesai')
+          ->where('status','<>','cancel')
+          ->groupBy('dataPelanggan.id_pelanggan')
+          ->get();
+    // dd($user[0]->id_pelanggan);
+    return view('front.utama.catatan',['lists'=>$list,'kategoris'=>$kategoris,'orders'=>$order]);
+  }
+  }
+
 
 }

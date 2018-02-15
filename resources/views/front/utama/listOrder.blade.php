@@ -9,7 +9,7 @@
       </h1>
       <div class="row" style="margin-bottom:20px;">
         <div class="col-md-12 text-right">
-          <a href="#" class="btn btn-warning wave-effects" style="color:white !important;">Catatan Pembelian</a>
+          <a href="{{url('/catatan_pembelian')}}" class="btn btn-warning wave-effects" style="color:white !important;">Catatan Pembelian</a>
         </div>
       </div>
 

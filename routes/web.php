@@ -32,6 +32,8 @@ Route::get('/konfirmasi/res','bayarController@res');
 
 Route::get('/isiSaldo','homeController@isiSaldo');
 
+Route::get('/catatan_pembelian','homeController@catatanPembelian');
+
 Route::get('/isiSaldo/list','dataUsersController@listSaldo');
 
 Route::post('/isiSaldo/add','dataUsersController@addSaldo');
